@@ -1,0 +1,24 @@
+{
+  "name": "starbug/webpack",
+  "type": "starbug-module",
+  "description": "Starbug module for Webpack.",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Ali Gangji",
+      "homepage": "https://github.com/cogentParadigm"
+    }
+  ],
+  "extra": {
+    "namespace": "Starbug\\Webpack",
+    "foxy": true
+  },
+  "require": {
+    "starbug/config": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Starbug\\Webpack\\": "src/"
+    }
+  }
+}
