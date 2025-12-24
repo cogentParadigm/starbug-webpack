@@ -47,6 +47,12 @@ class WebpackConfiguration {
     $config = json_encode($this->get("options"), JSON_PRETTY_PRINT);
     $output .= "let config = ".$config.";\n\n";
     $output .= "config.context = path.resolve(__dirname, '../../');\n";
+    $output .= "config.resolve = config.resolve || {};\n";
+    $output .= "config.resolve.alias = config.resolve.alias || {};\n";
+    $alieses = $this->get("aliases");
+    foreach ($alieses as $alias => $path) {
+      $output .= "config.resolve.alias['".$alias."'] = path.resolve(config.context, '".$path."');\n";
+    }
     $output .= "config.plugins = [];\n";
     $plugins = $this->get("plugins");
     foreach ($plugins as $plugin) {
