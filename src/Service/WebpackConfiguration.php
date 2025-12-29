@@ -70,4 +70,16 @@ class WebpackConfiguration {
       $this->configuration = $this->config->get("webpack") ?? [];
     }
   }
+
+  public function getAssetPath($file, $defaultDir) {
+    $buildDir = "libraries/dist/";
+    $buildPath = $buildDir . $file;
+    $defaultDir = rtrim($defaultDir, "/")."/";
+    if (file_exists($buildPath)) {
+      $timestamp = filemtime($buildPath);
+      $file .= "?v=" . $timestamp;
+      return $buildDir . $file;
+    }
+    return $defaultDir . $file;
+  }
 }
